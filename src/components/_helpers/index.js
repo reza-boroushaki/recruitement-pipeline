@@ -6,3 +6,17 @@ export const stages = [
     {name: "Rejected", color: '#FA1B1B'},
     {name: "Hired", color: 'orange'}
 ]
+
+export const generateActionObject = (elm, title, from, to) => {
+    if(title === "resume") {
+        from = ''; 
+        to = '';
+    };
+    return {
+        type: elm,
+        title,
+        from: from.length ? from : '',
+        to,
+        time: new Date().getTime()
+    }
+}

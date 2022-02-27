@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Input from "../Inputs/Input";
-import { stages } from '../_helpers';
+import { stages, generateActionObject } from '../_helpers';
 
 export default function Form() {
     const [stage, setStage] = useState(0);
