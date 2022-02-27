@@ -42,6 +42,18 @@ export default function Form({ userID }) {
         })
         .catch(() => console.log("error"));
     }
+    useEffect(() => {
+        getUser(userID).then(user => {
+            if(user){
+                setForm(user);
+                setLoading(false);
+            }
+        })
+        .catch((e) => console.log(e));
+    }, [userID]);
+    if(loading){
+        return <p>Loading...</p>
+    }
     return (
         <>
             <form>
