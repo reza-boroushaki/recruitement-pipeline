@@ -18,6 +18,7 @@ export default function Form({ userID }) {
         'seniority': '',
         'experience': '',
         'resume': [],
+        'comment': '',
         'actions': [{
           type: 'added',
           title: '',
@@ -41,12 +42,12 @@ export default function Form({ userID }) {
         setStage(val);
         updateForm('staging', val);
     }, [form])
-    const updateForm = useCallback((title, val) => {
+    const updateForm = useCallback((title, val, type = 'input') => {
         const update = {
             ...form,
             id: userID,
             [title]: typeof form[title] === "object" && title !== 'resume' ? [...form[title], val] : val,
-            actions: [...form.actions, generateActionObject('input', title, form[title], val)]
+            actions: [...form.actions, generateActionObject(type, title, form[title], val)]
         }
         console.log("UPDATE ", update);
         setForm(update);
@@ -77,7 +78,6 @@ export default function Form({ userID }) {
         getUser(userID).then(user => {
             if(user){
                 setForm(user);
-                console.log("user", user)
                 setStage(parseInt(user.stage));
                 setLoading(false);
             }
@@ -220,6 +220,14 @@ export default function Form({ userID }) {
                             <div className='actions' key={index}>{getActionTranslate(item)}</div>
                         ))
                     }
+                    <Input
+                        attr={{
+                            type: "text",
+                            title: "",
+                            name: "comment"
+                        }}
+                        updateForm={updateForm}
+                    />
                 </div>
             </form>
         </>

@@ -31,7 +31,7 @@ export const getActionTranslate = val => {
             </>
         )
     }else
-    if(val.from === '' || (val.title !== 'full_name' && val.title !== 'skills' && val.title !== 'resume' && val.title !== 'staging')){
+    if(val.from === '' || (val.title !== 'full_name' && val.title !== 'skills' && val.title !== 'resume' && val.title !== 'staging' && val.type !== 'comment')){
         return(
             <>
                 <p className='actionTitle'>You {`changed ${val.title.replace('_',' ')} ${val.from === '' ? '' : 'from'} `} <b>{val.from && val.from}</b> to <b>{val.to}</b></p>
@@ -66,6 +66,14 @@ export const getActionTranslate = val => {
             <>
                 <p className='actionTitle'>You changed status from <span style={{backgroundColor: `${stages[val.from].color}`}}></span> <b>{stages[val.from].name}</b> to <span style={{backgroundColor: `${stages[val.to].color}`}}></span> <b>{stages[val.to].name}</b></p>
                 <p className='actionTime'><i>{getDateTime(val.time)}</i></p>
+            </>
+        )
+    }else
+    if(val.type === 'comment'){
+        return(
+            <>
+                <p className='commentTitle'><b>T</b>Tornike Shvanigradze</p>
+                <p className='commentBody'>{val.to}</p>
             </>
         )
     }

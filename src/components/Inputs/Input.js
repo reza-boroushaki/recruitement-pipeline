@@ -10,7 +10,9 @@ function Input({ attr, updateForm, inputState = '' }) {
 
     const handleInput = e => {
         setInputValue(e.target.value);
-        e.target.style.width = ((e.target.value.length + 1) * 8) + "px";
+        if(name !== "comment"){
+            e.target.style.width = ((e.target.value.length + 1) * 8) + "px";
+        }
     }
 
     const handleSubmit = e => {
@@ -19,6 +21,12 @@ function Input({ attr, updateForm, inputState = '' }) {
         inputRef?.current.classList.remove('editing');
         updateForm(name, inputValue);
         if(name === 'skills') setInputValue('');
+    }
+    
+    const submitComment = e => {
+        e.preventDefault();
+        updateForm(name, inputValue, 'comment');
+        setInputValue('');
     }
 
     const handleEdit = e => {
@@ -40,27 +48,38 @@ function Input({ attr, updateForm, inputState = '' }) {
     }, [inputState]);
 
     return (
-        <div className={`${name} input`}>
-            <p className='label'><label>{title ? title : ' '}</label></p>
-            <div className='buttonsInputWrapper'>
-            <input style={{width: inputValue ? ((inputValue.length + 1) * 8) + "px" : 'fit-content'}} className={!inputValue ? 'empty' : ''} ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} maxLength={maxLength} title=''/>
-            {
-                inputValue?.length && !submitValue
-                ?
-                    <div className='clearSubmitButtons'>
-                        <button onClick={handleClear}></button>
-                        <button onClick={handleSubmit}></button>
-                    </div>
-                :
-                ''
-            }
-            {
-                submitValue && name !== 'skills' && (
-                    <button className='editButton' onClick={handleEdit}></button>
-                )
-            }
+        <>
+        {
+            name !== 'comment'
+            ?
+            <div className={`${name} input`}>
+                <p className='label'><label>{title ? title : ' '}</label></p>
+                <div className='buttonsInputWrapper'>
+                <input style={{width: inputValue ? ((inputValue.length + 1) * 8) + "px" : 'fit-content'}} className={!inputValue ? 'empty' : ''} ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} maxLength={maxLength} title=''/>
+                {
+                    inputValue?.length && !submitValue
+                    ?
+                        <div className='clearSubmitButtons'>
+                            <button onClick={handleClear}></button>
+                            <button onClick={handleSubmit}></button>
+                        </div>
+                    :
+                    ''
+                }
+                {
+                    submitValue && name !== 'skills' && (
+                        <button className='editButton' onClick={handleEdit}></button>
+                    )
+                }
+                </div>
             </div>
-        </div>
+            :
+            <div className={name}>
+                <input type="text" placeholder='Type to comment' value={inputValue} onChange={handleInput}/>
+                <button type='button' onClick={submitComment}>Comment</button>
+            </div>
+        }
+        </>
     )
 }
 

@@ -33,6 +33,7 @@ const handlers = [
         'seniority': '',
         'experience': '',
         'resume': [],
+        'comment': '',
         'actions': [{
           type: 'added',
           title: '',
