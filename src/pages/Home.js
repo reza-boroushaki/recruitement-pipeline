@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useHistory} from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { getAllUser, createUser, deleteUser } from '../api';
 
 export default function Home() {
@@ -15,6 +15,15 @@ export default function Home() {
     })
     .catch(() => console.log("error"));
   }
+  const removeUser = (e, id) => {
+    e.preventDefault();
+    deleteUser(id).then(res => {
+        if(res){
+            setData(res);
+        }
+    })
+    .catch((e) => console.log(e));
+  }
   useEffect(() => {
     getAllUser().then(user => {
         if(!!user){
@@ -25,6 +34,22 @@ export default function Home() {
   }, []);
   return (
     <div>
+      {
+        data?.length
+        ?
+        data?.map((item, index) => (
+            <div key={index}>
+                {item.id}
+                <Link to={{
+                    pathname: `/edit/${item.id}`,
+                    state: {id: item.id}
+                }}>Edit</Link>
+                <button onClick={e => removeUser(e, item.id)}>delete</button>
+            </div>
+        ))
+        :
+        <p>No candidates found</p>
+      }
       <button onClick={startForm}>Start new candidate</button>
     </div>
   )
