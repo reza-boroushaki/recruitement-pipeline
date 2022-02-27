@@ -37,6 +37,12 @@ body {
 .paddingLeftRight{
   padding: 0 20px;
 }
+.label{
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-1);
+  margin-bottom: 12px;
+}
 @media screen and (min-width: 768px){
   .container{
     width: 80vw;
