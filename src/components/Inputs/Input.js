@@ -41,7 +41,7 @@ function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
     }, [inputState]);
 
     return (
-        <div>
+        <div className={name}>
             <p><label>{title ? title : ''}</label></p>
             <input ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} title=''/>
             {
