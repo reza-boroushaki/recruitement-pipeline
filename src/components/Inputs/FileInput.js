@@ -1,6 +1,6 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, memo } from 'react'
 
-export default function FileInput({ updateForm, inputState }) {
+function FileInput({ updateForm, inputState }) {
     const [selectedFile, setSelectedFile] = useState(inputState);
     const droppedFileRef = useRef(null);
     const dragOverHandler = e => {
@@ -40,3 +40,5 @@ export default function FileInput({ updateForm, inputState }) {
         </>
     )
 }
+
+export default memo(FileInput);
