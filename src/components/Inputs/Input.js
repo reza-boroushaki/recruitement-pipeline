@@ -11,6 +11,13 @@ export default function Input({ attr }) {
         setInputValue(e.target.value);
     }
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        setSubmitValue(true);
+        updateForm(name, inputValue);
+        if(name === 'skills') setInputValue('');
+    }
+
     const handleEdit = e => {
         e.preventDefault();
         setSubmitValue(false);
