@@ -5,12 +5,27 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #E5E5E5;
 }
 
 *{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+:root{
+  --color-1: #010414;
+  --color-2: #41434F;
+  --color-3: #808189;
+  --color-4: #BFC0C4;
+  --color-5: #E6E6E7;
+  --color-6: #F6F6F7;
+  --color-7: #FFFFFF;
+  --color-i: #1013EF;
+  --color-ii:#EF1083;
+  --color-iii:#EFEC10;
+  --color-iv: #10EF7C;
 }
 
 .container{
