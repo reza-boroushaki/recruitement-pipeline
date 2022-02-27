@@ -7,3 +7,44 @@
     padding-top: 16px;
     padding-bottom: 16px;
 }
+
+form{
+    display: flex;
+    .leftCol{
+        flex: .5 .5;
+        border-right: 1px dashed var(--color-5);
+        .stageWrapper{
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--color-5);
+            div{
+                width: fit-content;
+                position: relative;
+                &::after{
+                    content: "";
+                    position: absolute;
+                    width: 34px;
+                    height: 100%;
+                    border-left: 1px solid var(--color-7);
+                    right: 0;
+                    background-image: url("../../images/arrow_down.svg");
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    pointer-events: none;
+                }
+            }
+            select{
+                height: 40px;
+                padding: 0 50px 0 20px;
+                border-radius: 8px;
+                font-size: px-to-rem(14, 16);
+                font-weight: 500;
+                color: var(--color-1);
+                appearance: none;
+                outline: none;
+                position: relative;
+                cursor: pointer;
+            }
+        }
+    }
+}

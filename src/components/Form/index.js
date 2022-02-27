@@ -60,12 +60,14 @@ export default function Form({ userID }) {
             <h2 className='userName paddingLeftRight'>{form?.full_name}</h2>
             <form>
                 <div className="leftCol">
-                    <div className="stageWrapper">
-                        <select style={{backgroundColor: `${stages[stage].color}`}} onChange={e => stageChange(e.target.value)} value={stage}>
-                            {
-                                stages.map((item, index) => <option key={index} value={index}>{item.name}</option>)
-                            }
-                        </select>
+                    <div className="stageWrapper paddingLeftRight">
+                        <div>
+                            <select style={{backgroundColor: `${stages[stage].color}`, border: `1px solid ${stages[stage].color}`}} onChange={e => stageChange(e.target.value)} value={stage}>
+                                {
+                                    stages.map((item, index) => <option key={index} value={index}>{item.name}</option>)
+                                }
+                            </select>
+                        </div>
                     </div>
                     <Input
                         attr={{
