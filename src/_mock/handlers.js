@@ -23,6 +23,7 @@ const handlers = [
       const user = localStorage.getItem("candidates");
       const obj = {
         'id': req.body, 
+        'staging': '0',
         'full_name': '',
         'email': '',
         'phone_number': '',

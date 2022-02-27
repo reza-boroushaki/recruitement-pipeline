@@ -7,11 +7,40 @@ import './form.scss';
 
 export default function Form({ userID }) {
     const [stage, setStage] = useState(0);
-    const [form, setForm] = useState(null);
+    const [form, setForm] = useState({
+        'staging': '0',
+        'full_name': '',
+        'email': '',
+        'phone_number': '',
+        'min_salary': '',
+        'max_salary': '',
+        'skills': [],
+        'seniority': '',
+        'experience': '',
+        'resume': [],
+        'actions': [{
+          type: 'added',
+          title: '',
+          from: '',
+          to: '',
+          time: new Date().getTime()
+      }]
+      });
     const [loading, setLoading] = useState(true);
-    const stageChange = useCallback(val => {
+    const stageChange = useCallback((e, val) => {
+        e.preventDefault();
+        if(
+            form?.name === '' ||
+            form?.email === '' ||
+            form?.phone_number === '' ||
+            form?.seniority === '' ||
+            form?.experience === ''
+        ){
+            return;
+        }
         setStage(val);
-    }, [])
+        updateForm('staging', val);
+    }, [form])
     const updateForm = useCallback((title, val) => {
         const update = {
             ...form,
@@ -19,6 +48,7 @@ export default function Form({ userID }) {
             [title]: typeof form[title] === "object" && title !== 'resume' ? [...form[title], val] : val,
             actions: [...form.actions, generateActionObject('input', title, form[title], val)]
         }
+        console.log("UPDATE ", update);
         setForm(update);
         updateUser(userID,update).then(res => {
             if(res.stat){
@@ -47,6 +77,8 @@ export default function Form({ userID }) {
         getUser(userID).then(user => {
             if(user){
                 setForm(user);
+                console.log("user", user)
+                setStage(parseInt(user.stage));
                 setLoading(false);
             }
         })
@@ -62,7 +94,7 @@ export default function Form({ userID }) {
                 <div className="leftCol">
                     <div className="stageWrapper paddingLeftRight">
                         <div>
-                            <select style={{backgroundColor: `${stages[stage].color}`, border: `1px solid ${stages[stage].color}`}} onChange={e => stageChange(e.target.value)} value={stage}>
+                            <select style={{backgroundColor: `${stages[parseInt(form?.staging)].color}`, border: `1px solid ${stages[parseInt(form?.staging)].color}`}} onChange={e => stageChange(e, e.target.value)} value={form?.staging}>
                                 {
                                     stages.map((item, index) => <option key={index} value={index}>{item.name}</option>)
                                 }
@@ -78,8 +110,6 @@ export default function Form({ userID }) {
                                 required: true
                             }}
                             updateForm={updateForm}
-                            stage={stage}
-                            stageChange={stageChange}
                             inputState={form?.full_name}
                         />
                         <Input
@@ -90,8 +120,6 @@ export default function Form({ userID }) {
                                 required: true
                             }}
                             updateForm={updateForm}
-                            stage={stage}
-                            stageChange={stageChange}
                             inputState={form?.email}
                         />
                         <Input
@@ -102,8 +130,6 @@ export default function Form({ userID }) {
                                 required: true
                             }}
                             updateForm={updateForm}
-                            stage={stage}
-                            stageChange={stageChange}
                             inputState={form?.phone_number}
                         />
                         <div className="salaryWrapper">
@@ -154,8 +180,6 @@ export default function Form({ userID }) {
                                 required: true
                             }}
                             updateForm={updateForm}
-                            stage={stage}
-                            stageChange={stageChange}
                             inputState={form?.seniority}
                         />
                         <Input
@@ -167,8 +191,6 @@ export default function Form({ userID }) {
                                 maxLength: 2
                             }}
                             updateForm={updateForm}
-                            stage={stage}
-                            stageChange={stageChange}
                             inputState={form?.experience}
                         />
                         <FileInput 
@@ -194,7 +216,8 @@ export default function Form({ userID }) {
                     </div>
                     {
                         form?.actions.map((item, index) => (
-                            <div key={index}>{getActionTranslate(item)}</div>
+                            index > 0 &&
+                            <div className='actions' key={index}>{getActionTranslate(item)}</div>
                         ))
                     }
                 </div>

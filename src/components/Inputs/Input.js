@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, memo } from 'react';
 import './input.scss';
 
-function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
+function Input({ attr, updateForm, inputState = '' }) {
     const { type, title, name, required = false, maxLength } = attr;
     const [inputValue, setInputValue] = useState('');
     const [submitValue, setSubmitValue] = useState(inputState ? true : false);
@@ -34,12 +34,6 @@ function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
         inputRef?.current.classList.remove('editing');
         updateForm(name, '');
     }
-
-    useEffect(() => {
-        if(stage > 0 && (inputValue === '' || !submitValue) && required){
-            stageChange(0);
-        }
-    }, [stage, inputValue, required, stageChange, submitValue]);
 
     useEffect(() => {
         setInputValue(inputState);

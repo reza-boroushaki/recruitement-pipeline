@@ -118,6 +118,31 @@ form{
                 padding-left: 16px;
             }
         }
+        .actions{
+            padding: 20px 0;
+            width: 90%;
+            margin: 0 auto;
+            border-bottom: 1px dashed var(--color-5);
+            .actionTitle{
+                font-size: px-to-rem(14, 16);
+                color: var(--color-3);
+                margin-bottom: 8px;
+                b{
+                    font-weight: 400;
+                    color: var(--color-1);
+                }
+                span{
+                    width: 12px;
+                    height: 12px;
+                    display: inline-block;
+                    border-radius: 4px;
+                }
+            }
+            .actionTime{
+                font-size: px-to-rem(12, 16);
+                color: var(--color-3);
+            }
+        }
         @media screen and (min-width: 768px) {
             .addedWrapper{
                 padding: 20px 40px;
