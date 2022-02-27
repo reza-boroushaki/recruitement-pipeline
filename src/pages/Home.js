@@ -58,7 +58,7 @@ export default function Home() {
             </div>
         ))
         :
-        <p>No candidates found</p>
+        <p style={{textAlign: 'center'}}>No candidates found, please create new one</p>
       }
       <p className='startCandidateButton'><button type='button' onClick={startForm}>Start new candidate</button></p>
     </div>
