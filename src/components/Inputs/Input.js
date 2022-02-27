@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Input({ attr }) {
     const { type, title, name, required = false } = attr;
@@ -29,6 +29,12 @@ export default function Input({ attr }) {
         setInputValue('');
         updateForm(name, '');
     }
+
+    useEffect(() => {
+        if(stage > 0 && (inputValue === '' || !submitValue) && required){
+            stageChange(0);
+        }
+    }, [stage, inputValue, required, stageChange, submitValue]);
 
     return (
         <div>
