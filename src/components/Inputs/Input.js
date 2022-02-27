@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, memo } from 'react';
 
-export default function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
+function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
     const { type, title, name, required = false } = attr;
     const [inputValue, setInputValue] = useState('');
     const [submitValue, setSubmitValue] = useState(inputState ? true : false);
@@ -62,3 +62,5 @@ export default function Input({ attr, updateForm, stage, stageChange, inputState
         </div>
     )
 }
+
+export default memo(Input);
