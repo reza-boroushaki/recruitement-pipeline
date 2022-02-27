@@ -16,6 +16,16 @@ export default function Form() {
         }
         setForm(update);
     }, [form])
+    const removeSkill = (e, skill) => {
+        e.preventDefault();
+        const filterSkill = form.skills.filter(item => item !== skill);
+        const update = {
+            ...form,
+            skills: filterSkill,
+            actions: [...form.actions, generateActionObject('input', 'skills', skill, '')]
+        }
+        setForm(update);
+    }
     return (
         <>
             <form>
@@ -83,6 +93,16 @@ export default function Form() {
                             updateForm={updateForm}
                             inputState={form?.max_salary}
                         />
+                    </div>
+                    <div>
+                        {
+                            form?.skills?.map((item, index) => (
+                                <div key={index}>
+                                    <span>{item}</span>
+                                    <button onClick={e => removeSkill(e, item)}>x</button>
+                                </div>
+                            ))
+                        }
                     </div>
                     <Input
                         attr={{
