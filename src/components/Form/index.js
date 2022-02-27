@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import Input from "../Inputs/Input";
 import { stages } from '../_helpers';
 
 export default function Form() {
@@ -17,6 +18,95 @@ export default function Form() {
                             }
                         </select>
                     </div>
+                    <Input
+                        attr={{
+                            type: "text",
+                            title: "Full name",
+                            name: "full_name",
+                            required: true
+                        }}
+                        updateForm={updateForm}
+                        stage={stage}
+                        stageChange={stageChange}
+                        inputState={form?.full_name}
+                    />
+                    <Input
+                        attr={{
+                            type: "email",
+                            title: "Email",
+                            name: "email",
+                            required: true
+                        }}
+                        updateForm={updateForm}
+                        stage={stage}
+                        stageChange={stageChange}
+                        inputState={form?.email}
+                    />
+                    <Input
+                        attr={{
+                            type: "number",
+                            title: "Phone number",
+                            name: "phone_number",
+                            required: true
+                        }}
+                        updateForm={updateForm}
+                        stage={stage}
+                        stageChange={stageChange}
+                        inputState={form?.phone_number}
+                    />
+                    <div className="salaryWrapper">
+                        <Input
+                            attr={{
+                                type: "number",
+                                title: "Salary",
+                                name: "min_salary",
+                            }}
+                            updateForm={updateForm}
+                            inputState={form?.min_salary}
+                        />
+                        -
+                        <Input
+                            attr={{
+                                type: "number",
+                                title: "",
+                                name: "max_salary",
+                            }}
+                            updateForm={updateForm}
+                            inputState={form?.max_salary}
+                        />
+                    </div>
+                    <Input
+                        attr={{
+                            type: "text",
+                            title: "Skills",
+                            name: "skills",
+                        }}
+                        updateForm={updateForm}
+                    />
+                    <Input
+                        attr={{
+                            type: "text",
+                            title: "Seniority",
+                            name: "seniority",
+                            required: true
+                        }}
+                        updateForm={updateForm}
+                        stage={stage}
+                        stageChange={stageChange}
+                        inputState={form?.seniority}
+                    />
+                    <Input
+                        attr={{
+                            type: "number",
+                            title: "Years of experience",
+                            name: "experience",
+                            required: true
+                        }}
+                        updateForm={updateForm}
+                        stage={stage}
+                        stageChange={stageChange}
+                        inputState={form?.experience}
+                    />
                 </div>
                 <div className="rightCol">
 
