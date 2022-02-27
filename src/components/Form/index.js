@@ -35,6 +35,12 @@ export default function Form({ userID }) {
             actions: [...form.actions, generateActionObject('input', 'skills', skill, '')]
         }
         setForm(update);
+        updateUser(userID,update).then(res => {
+            if(res.stat){
+                console.log("updated");
+            }
+        })
+        .catch(() => console.log("error"));
     }
     return (
         <>
