@@ -60,5 +60,40 @@ form{
                 width: 60px;
             }
         }
+        .skillsTagWrapper{
+            width: 50%;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            div{
+                padding: 9px 18px;
+                font-size: px-to-rem(14, 16);
+                color: var(--color-2);
+                border-radius: 18px;
+                background: var(--color-6);
+                position: relative;
+                margin-bottom: 12px;
+                button{
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    border: 1px solid var(--color-1);
+                    background: var(--color-1);
+                    border-radius: 100%;
+                    color: var(--color-7);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    top: -5px;
+                    right: -5px;
+                }
+            }
+        }
+        .label{
+            font-size: px-to-rem(14px);
+            font-weight: 700;
+            color: var(--color-1);
+            margin-bottom: 12px;
+        }
     }
 }

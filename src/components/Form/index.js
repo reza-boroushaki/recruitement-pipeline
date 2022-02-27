@@ -127,7 +127,8 @@ export default function Form({ userID }) {
                                 inputState={form?.max_salary}
                             />
                         </div>
-                        <div>
+                        <p className='label'><label>Skills</label></p>
+                        <div className='skillsTagWrapper'>
                             {
                                 form?.skills?.map((item, index) => (
                                     <div key={index}>
@@ -140,7 +141,7 @@ export default function Form({ userID }) {
                         <Input
                             attr={{
                                 type: "text",
-                                title: "Skills",
+                                title: "",
                                 name: "skills",
                             }}
                             updateForm={updateForm}
@@ -162,7 +163,8 @@ export default function Form({ userID }) {
                                 type: "number",
                                 title: "Years of experience",
                                 name: "experience",
-                                required: true
+                                required: true,
+                                maxLength: 2
                             }}
                             updateForm={updateForm}
                             stage={stage}

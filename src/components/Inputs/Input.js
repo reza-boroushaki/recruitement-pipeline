@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, memo } from 'react';
 import './input.scss';
 
 function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
-    const { type, title, name, required = false } = attr;
+    const { type, title, name, required = false, maxLength } = attr;
     const [inputValue, setInputValue] = useState('');
     const [submitValue, setSubmitValue] = useState(inputState ? true : false);
 
@@ -48,7 +48,8 @@ function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
     return (
         <div className={`${name} input`}>
             <p className='label'><label>{title ? title : ' '}</label></p>
-            <input style={{width: inputValue ? ((inputValue.length + 1) * 8) + "px" : 'fit-content'}} className={!inputValue ? 'empty' : ''} ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} title=''/>
+            <div className='buttonsInputWrapper'>
+            <input style={{width: inputValue ? ((inputValue.length + 1) * 8) + "px" : 'fit-content'}} className={!inputValue ? 'empty' : ''} ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} maxLength={maxLength} title=''/>
             {
                 inputValue?.length && !submitValue
                 ?
@@ -60,10 +61,11 @@ function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
                 ''
             }
             {
-                submitValue && (
+                submitValue && name !== 'skills' && (
                     <button className='editButton' onClick={handleEdit}></button>
                 )
             }
+            </div>
         </div>
     )
 }
