@@ -21,6 +21,21 @@ export default function Input({ attr }) {
         <div>
             <p><label>{title ? title : ''}</label></p>
             <input ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} title=''/>
+            {
+                inputValue?.length && !submitValue
+                ?
+                    <div>
+                        <button onClick={handleClear}>clear</button>
+                        <button onClick={handleSubmit}>submit</button>
+                    </div>
+                :
+                ''
+            }
+            {
+                submitValue && (
+                    <button onClick={handleEdit}>edit</button>
+                )
+            }
         </div>
     )
 }
