@@ -3,6 +3,8 @@ import Form from '../components/Form';
 
 export default function Edit(props) {
   return (
-    <Form userID={props.match.params.id}/>
+    <div className='container'>
+      <Form userID={props.match.params.id}/>
+    </div>
   )
 }
