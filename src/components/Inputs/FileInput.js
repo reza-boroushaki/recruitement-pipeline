@@ -1,4 +1,5 @@
 import { useState, useRef, memo } from 'react'
+import { acceptFileTypes } from '../_helpers'
 
 function FileInput({ updateForm, inputState }) {
     const [selectedFile, setSelectedFile] = useState(inputState);
