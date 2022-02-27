@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Input from "../Inputs/Input";
+import FileInput from "../Inputs/FileInput";
 import { stages, generateActionObject } from '../_helpers';
 
 export default function Form() {
@@ -135,6 +136,10 @@ export default function Form() {
                         stage={stage}
                         stageChange={stageChange}
                         inputState={form?.experience}
+                    />
+                    <FileInput 
+                        updateForm={updateForm}
+                        inputState={form?.resume}
                     />
                 </div>
                 <div className="rightCol">
