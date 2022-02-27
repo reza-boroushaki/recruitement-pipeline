@@ -1,0 +1,11 @@
+@import '../_helpers/function';
+
+header{
+    padding: 90px 20px;
+    h1{
+        font-size: px-to-rem(25, 16);
+    }
+    @media screen and (min-width: 768px) {
+        padding: 90px 40px;
+    }
+}
