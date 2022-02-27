@@ -37,6 +37,7 @@
         background-color: transparent;
         background-repeat: no-repeat;
         background-position: center bottom;
+        background-size: contain;
         cursor: pointer;
     }
     .clearSubmitButtons{
@@ -47,6 +48,7 @@
         button{
             &:first-child{
                 background-image: url('../../images/clear.svg');
+                margin-right: 8px;
             }
             &:last-child{
                 background-image: url('../../images/submit.svg');
@@ -55,5 +57,7 @@
     }
     .editButton{
         background-image: url('../../images/edit.svg');
+        width: 10px;
+        height: 10px;
     }
 }
