@@ -56,6 +56,7 @@ export default function Form({ userID }) {
     }
     return (
         <>
+            <h1>{form?.full_name}</h1>
             <form>
                 <div className="leftCol">
                     <div className="stageWrapper">
