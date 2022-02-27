@@ -45,6 +45,7 @@
         left: 110%;
         bottom: 0;
         display: flex;
+        z-index: 2;
         button{
             &:first-child{
                 background-image: url('../../images/clear.svg');
@@ -59,5 +60,11 @@
         background-image: url('../../images/edit.svg');
         width: 10px;
         height: 10px;
+        position: absolute;
+        left: 110%;
+        bottom: 5px;
+    }
+    &.max_salary{
+        margin-top: 20px;
     }
 }

@@ -50,5 +50,15 @@ form{
             padding-top: 20px;
             padding-bottom: 20px;
         }
+        .salaryWrapper{
+            display: flex;
+            align-items: center;
+            span{
+                margin: 10px 20px 0 20px;
+            }
+            input{
+                width: 60px;
+            }
+        }
     }
 }

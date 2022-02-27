@@ -116,7 +116,7 @@ export default function Form({ userID }) {
                                 updateForm={updateForm}
                                 inputState={form?.min_salary}
                             />
-                            -
+                            <span>-</span>
                             <Input
                                 attr={{
                                     type: "number",

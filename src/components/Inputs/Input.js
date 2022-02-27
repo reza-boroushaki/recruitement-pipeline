@@ -47,8 +47,8 @@ function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
 
     return (
         <div className={`${name} input`}>
-            <p className='label'><label>{title ? title : ''}</label></p>
-            <input className={!inputValue ? 'empty' : ''} ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} title=''/>
+            <p className='label'><label>{title ? title : ' '}</label></p>
+            <input style={{width: inputValue ? ((inputValue.length + 1) * 8) + "px" : 'fit-content'}} className={!inputValue ? 'empty' : ''} ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} title=''/>
             {
                 inputValue?.length && !submitValue
                 ?
