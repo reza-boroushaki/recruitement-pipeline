@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, memo } from 'react';
+import './input.scss';
 
 function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
     const { type, title, name, required = false } = attr;
@@ -9,11 +10,13 @@ function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
 
     const handleInput = e => {
         setInputValue(e.target.value);
+        e.target.style.width = ((e.target.value.length + 1) * 8) + "px";
     }
 
     const handleSubmit = e => {
         e.preventDefault();
         setSubmitValue(true);
+        inputRef?.current.classList.remove('editing');
         updateForm(name, inputValue);
         if(name === 'skills') setInputValue('');
     }
@@ -21,12 +24,14 @@ function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
     const handleEdit = e => {
         e.preventDefault();
         setSubmitValue(false);
+        e.target.classList.add('editing');
         inputRef?.current.focus();
     }
 
     const handleClear = e => {
         e.preventDefault();
         setInputValue('');
+        inputRef?.current.classList.remove('editing');
         updateForm(name, '');
     }
 
@@ -41,22 +46,22 @@ function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
     }, [inputState]);
 
     return (
-        <div className={name}>
-            <p><label>{title ? title : ''}</label></p>
-            <input ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} title=''/>
+        <div className={`${name} input`}>
+            <p className='label'><label>{title ? title : ''}</label></p>
+            <input className={!inputValue ? 'empty' : ''} ref={inputRef} type={type} name={name} value={inputValue} onChange={handleInput} onFocus={handleEdit} title=''/>
             {
                 inputValue?.length && !submitValue
                 ?
-                    <div>
-                        <button onClick={handleClear}>clear</button>
-                        <button onClick={handleSubmit}>submit</button>
+                    <div className='clearSubmitButtons'>
+                        <button onClick={handleClear}></button>
+                        <button onClick={handleSubmit}></button>
                     </div>
                 :
                 ''
             }
             {
                 submitValue && (
-                    <button onClick={handleEdit}>edit</button>
+                    <button className='editButton' onClick={handleEdit}></button>
                 )
             }
         </div>

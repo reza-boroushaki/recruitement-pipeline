@@ -1,0 +1,59 @@
+@import '../_helpers/function';
+
+.input{
+    background: transparent;
+    margin-bottom: 20px;
+    width: fit-content;
+    position: relative;
+    .label{
+        font-size: px-to-rem(14px);
+        font-weight: 700;
+        color: var(--color-1);
+        margin-bottom: 12px;
+    }
+    input{
+        border: none;
+        line-height: 19px;
+        font-size: px-to-rem(16, 16);
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+        &[type=number]{
+            -moz-appearance: textfield;
+        }
+        &.editing{
+            text-decoration: underline;
+        }
+        &.empty{
+            border-bottom: 1px solid var(--color-1);
+        }
+    }
+    button{
+        width: 20px;
+        height: 20px;
+        border: none;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        cursor: pointer;
+    }
+    .clearSubmitButtons{
+        position: absolute;
+        left: 110%;
+        bottom: 0;
+        display: flex;
+        button{
+            &:first-child{
+                background-image: url('../../images/clear.svg');
+            }
+            &:last-child{
+                background-image: url('../../images/submit.svg');
+            }
+        }
+    }
+    .editButton{
+        background-image: url('../../images/edit.svg');
+    }
+}

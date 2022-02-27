@@ -69,109 +69,111 @@ export default function Form({ userID }) {
                             </select>
                         </div>
                     </div>
-                    <Input
-                        attr={{
-                            type: "text",
-                            title: "Full name",
-                            name: "full_name",
-                            required: true
-                        }}
-                        updateForm={updateForm}
-                        stage={stage}
-                        stageChange={stageChange}
-                        inputState={form?.full_name}
-                    />
-                    <Input
-                        attr={{
-                            type: "email",
-                            title: "Email",
-                            name: "email",
-                            required: true
-                        }}
-                        updateForm={updateForm}
-                        stage={stage}
-                        stageChange={stageChange}
-                        inputState={form?.email}
-                    />
-                    <Input
-                        attr={{
-                            type: "number",
-                            title: "Phone number",
-                            name: "phone_number",
-                            required: true
-                        }}
-                        updateForm={updateForm}
-                        stage={stage}
-                        stageChange={stageChange}
-                        inputState={form?.phone_number}
-                    />
-                    <div className="salaryWrapper">
+                    <div className='inputsContainer paddingLeftRight'>
+                        <Input
+                            attr={{
+                                type: "text",
+                                title: "Full name",
+                                name: "full_name",
+                                required: true
+                            }}
+                            updateForm={updateForm}
+                            stage={stage}
+                            stageChange={stageChange}
+                            inputState={form?.full_name}
+                        />
+                        <Input
+                            attr={{
+                                type: "email",
+                                title: "Email",
+                                name: "email",
+                                required: true
+                            }}
+                            updateForm={updateForm}
+                            stage={stage}
+                            stageChange={stageChange}
+                            inputState={form?.email}
+                        />
                         <Input
                             attr={{
                                 type: "number",
-                                title: "Salary",
-                                name: "min_salary",
+                                title: "Phone number",
+                                name: "phone_number",
+                                required: true
                             }}
                             updateForm={updateForm}
-                            inputState={form?.min_salary}
+                            stage={stage}
+                            stageChange={stageChange}
+                            inputState={form?.phone_number}
                         />
-                        -
+                        <div className="salaryWrapper">
+                            <Input
+                                attr={{
+                                    type: "number",
+                                    title: "Salary",
+                                    name: "min_salary",
+                                }}
+                                updateForm={updateForm}
+                                inputState={form?.min_salary}
+                            />
+                            -
+                            <Input
+                                attr={{
+                                    type: "number",
+                                    title: "",
+                                    name: "max_salary",
+                                }}
+                                updateForm={updateForm}
+                                inputState={form?.max_salary}
+                            />
+                        </div>
+                        <div>
+                            {
+                                form?.skills?.map((item, index) => (
+                                    <div key={index}>
+                                        <span>{item}</span>
+                                        <button onClick={e => removeSkill(e, item)}>x</button>
+                                    </div>
+                                ))
+                            }
+                        </div>
+                        <Input
+                            attr={{
+                                type: "text",
+                                title: "Skills",
+                                name: "skills",
+                            }}
+                            updateForm={updateForm}
+                        />
+                        <Input
+                            attr={{
+                                type: "text",
+                                title: "Seniority",
+                                name: "seniority",
+                                required: true
+                            }}
+                            updateForm={updateForm}
+                            stage={stage}
+                            stageChange={stageChange}
+                            inputState={form?.seniority}
+                        />
                         <Input
                             attr={{
                                 type: "number",
-                                title: "",
-                                name: "max_salary",
+                                title: "Years of experience",
+                                name: "experience",
+                                required: true
                             }}
                             updateForm={updateForm}
-                            inputState={form?.max_salary}
+                            stage={stage}
+                            stageChange={stageChange}
+                            inputState={form?.experience}
+                        />
+                        <FileInput 
+                            updateForm={updateForm}
+                            inputState={form?.resume}
                         />
                     </div>
-                    <div>
-                        {
-                            form?.skills?.map((item, index) => (
-                                <div key={index}>
-                                    <span>{item}</span>
-                                    <button onClick={e => removeSkill(e, item)}>x</button>
-                                </div>
-                            ))
-                        }
-                    </div>
-                    <Input
-                        attr={{
-                            type: "text",
-                            title: "Skills",
-                            name: "skills",
-                        }}
-                        updateForm={updateForm}
-                    />
-                    <Input
-                        attr={{
-                            type: "text",
-                            title: "Seniority",
-                            name: "seniority",
-                            required: true
-                        }}
-                        updateForm={updateForm}
-                        stage={stage}
-                        stageChange={stageChange}
-                        inputState={form?.seniority}
-                    />
-                    <Input
-                        attr={{
-                            type: "number",
-                            title: "Years of experience",
-                            name: "experience",
-                            required: true
-                        }}
-                        updateForm={updateForm}
-                        stage={stage}
-                        stageChange={stageChange}
-                        inputState={form?.experience}
-                    />
-                    <FileInput 
-                        updateForm={updateForm}
-                        inputState={form?.resume}
-                    />
                 </div>
                 <div className="rightCol">
 
