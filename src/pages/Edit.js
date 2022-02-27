@@ -1,8 +1,8 @@
 import React from 'react';
 import Form from '../components/Form';
 
-export default function Edit() {
+export default function Edit(props) {
   return (
-    <Form />
+    <Form userID={props.match.params.id}/>
   )
 }
