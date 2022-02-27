@@ -7,6 +7,10 @@ export const stages = [
     {name: "Hired", color: 'orange'}
 ]
 
+export const acceptFileTypes = [
+    {type: 'application/pdf', name: 'pdf'}
+]
+
 export const generateActionObject = (elm, title, from, to) => {
     if(title === "resume") {
         from = ''; 
