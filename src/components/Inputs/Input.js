@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 
-export default function Input({ attr }) {
+export default function Input({ attr, updateForm, stage, stageChange, inputState = '' }) {
     const { type, title, name, required = false } = attr;
     const [inputValue, setInputValue] = useState('');
     const [submitValue, setSubmitValue] = useState(inputState ? true : false);
