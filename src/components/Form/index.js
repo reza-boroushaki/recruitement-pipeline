@@ -2,21 +2,30 @@ import { useState, useEffect, useCallback } from 'react';
 import Input from "../Inputs/Input";
 import FileInput from "../Inputs/FileInput";
 import { stages, generateActionObject } from '../_helpers';
+import { updateUser, getUser } from "../../api";
 
-export default function Form() {
+export default function Form({ userID }) {
     const [stage, setStage] = useState(0);
     const [form, setForm] = useState(null);
+    const [loading, setLoading] = useState(true);
     const stageChange = useCallback(val => {
         setStage(val);
     }, [])
     const updateForm = useCallback((title, val) => {
         const update = {
             ...form,
+            id: userID,
             [title]: typeof form[title] === "object" && title !== 'resume' ? [...form[title], val] : val,
             actions: [...form.actions, generateActionObject('input', title, form[title], val)]
         }
         setForm(update);
-    }, [form])
+        updateUser(userID,update).then(res => {
+            if(res.stat){
+                console.log("updated");
+            }
+        })
+        .catch(() => console.log("error"));
+    }, [form, userID])
     const removeSkill = (e, skill) => {
         e.preventDefault();
         const filterSkill = form.skills.filter(item => item !== skill);
