@@ -188,6 +188,20 @@ form{
                 color: var(--color-7);
             }
         }
+        .submitForm{
+            width: 90%;
+            margin: 40px auto;
+            display: block;
+            background-color: var(--color-ii);
+            color: var(--color-7);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            padding: 10px 0;
+            cursor: pointer;
+            font-weight: bold;
+
+        }
         @media screen and (min-width: 768px) {
             .addedWrapper{
                 padding: 20px 40px;

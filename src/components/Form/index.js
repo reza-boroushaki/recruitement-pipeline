@@ -4,6 +4,7 @@ import FileInput from "../Inputs/FileInput";
 import { stages, generateActionObject, getDateTime, getDaysTill, getActionTranslate } from '../_helpers';
 import { updateUser, getUser } from "../../api";
 import './form.scss';
+import { Link } from 'react-router-dom';
 
 export default function Form({ userID }) {
     const [stage, setStage] = useState(0);
@@ -85,7 +86,7 @@ export default function Form({ userID }) {
         .catch((e) => console.log(e));
     }, [userID]);
     if(loading){
-        return <p>Loading...</p>
+        return <p className='loading'>Loading...</p>
     }
     return (
         <>
@@ -228,6 +229,7 @@ export default function Form({ userID }) {
                         }}
                         updateForm={updateForm}
                     />
+                    <Link className='submitForm' to="/">Submit</Link>
                 </div>
             </form>
         </>

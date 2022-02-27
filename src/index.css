@@ -43,6 +43,14 @@ body {
   color: var(--color-1);
   margin-bottom: 12px;
 }
+.loading{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 @media screen and (min-width: 768px){
   .container{
     width: 80vw;
