@@ -14,7 +14,15 @@ export default function Home() {
         }
     })
     .catch(() => console.log("error"));
-}
+  }
+  useEffect(() => {
+    getAllUser().then(user => {
+        if(!!user){
+            setData(user);
+        }
+    })
+    .catch((e) => console.log(e));
+  }, []);
   return (
     <div>
       <button onClick={startForm}>Start new candidate</button>
