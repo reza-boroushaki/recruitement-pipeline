@@ -4,9 +4,18 @@ import { stages } from '../_helpers';
 
 export default function Form() {
     const [stage, setStage] = useState(0);
+    const [form, setForm] = useState(null);
     const stageChange = useCallback(val => {
         setStage(val);
     }, [])
+    const updateForm = useCallback((title, val) => {
+        const update = {
+            ...form,
+            [title]: typeof form[title] === "object" && title !== 'resume' ? [...form[title], val] : val,
+            actions: [...form.actions, generateActionObject('input', title, form[title], val)]
+        }
+        setForm(update);
+    }, [form])
     return (
         <>
             <form>
