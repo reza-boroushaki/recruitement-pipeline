@@ -10,13 +10,16 @@
 
 form{
     display: flex;
+    flex-wrap: wrap;
     .leftCol{
-        flex: .5 .5;
+        width: 100%;
         border-right: 1px dashed var(--color-5);
         .stageWrapper{
             padding-top: 20px;
             padding-bottom: 20px;
             border-bottom: 1px dashed var(--color-5);
+            max-height: 80px;
+            height: 80px;
             div{
                 width: fit-content;
                 position: relative;
@@ -88,6 +91,43 @@ form{
                     right: -5px;
                 }
             }
+        }
+    }
+    .rightCol{
+        width: 100%;
+        .addedWrapper{
+            padding: 10px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            font-size: px-to-rem(12, 16);
+            border-bottom: 1px dashed var(--color-5);
+            max-height: 80px;
+            height: 80px;
+            .title{
+                color: var(--color-4);
+                margin-bottom: 8px;
+            }
+            .time{
+                color: var(--color-3);
+            }
+            .added{
+                padding-right: 16px;
+                border-right: 1px solid var(--color-5);
+            }
+            .lastupdate{
+                padding-left: 16px;
+            }
+        }
+        @media screen and (min-width: 768px) {
+            .addedWrapper{
+                padding: 20px 40px;
+            }
+        }
+    }
+    @media screen and (min-width: 1280px) {
+        .leftCol,
+        .rightCol{
+            width: 50%;
         }
     }
 }

@@ -4,7 +4,7 @@ import './fileInput.scss';
 
 function FileInput({ updateForm, inputState }) {
     const [selectedFile, setSelectedFile] = useState(inputState);
-    const [loaded, setLoaded] = useState(inputState ? true : false);
+    const [loaded, setLoaded] = useState(inputState.length ? true : false);
     const droppedFileRef = useRef(null);
     const dragOverHandler = e => {
         e.preventDefault();

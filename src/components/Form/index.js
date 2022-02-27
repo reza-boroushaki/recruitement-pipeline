@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Input from "../Inputs/Input";
 import FileInput from "../Inputs/FileInput";
-import { stages, generateActionObject } from '../_helpers';
+import { stages, generateActionObject, getDateTime, getDaysTill, getActionTranslate } from '../_helpers';
 import { updateUser, getUser } from "../../api";
 import './form.scss';
 
@@ -178,7 +178,25 @@ export default function Form({ userID }) {
                     </div>
                 </div>
                 <div className="rightCol">
-
+                    <div className='addedWrapper'>
+                        <div className='added'>
+                            <p className='title'>ADDED</p>
+                            <p className='time'>
+                            {
+                                getDateTime(form?.actions[0].time)
+                            }
+                            </p>
+                        </div>
+                        <div className='lastupdate'>
+                            <p className='title'>Last change</p>
+                            <p className='time'>{getDaysTill(form?.actions[form?.actions.length - 1].time)}</p>
+                        </div>
+                    </div>
+                    {
+                        form?.actions.map((item, index) => (
+                            <div key={index}>{getActionTranslate(item)}</div>
+                        ))
+                    }
                 </div>
             </form>
         </>
