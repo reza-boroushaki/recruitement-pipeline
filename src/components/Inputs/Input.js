@@ -36,6 +36,10 @@ export default function Input({ attr }) {
         }
     }, [stage, inputValue, required, stageChange, submitValue]);
 
+    useEffect(() => {
+        setInputValue(inputState);
+    }, [inputState]);
+
     return (
         <div>
             <p><label>{title ? title : ''}</label></p>
