@@ -1,0 +1,9 @@
+@import '../_helpers/function';
+
+.userName{
+    font-size: px-to-rem(20, 16);
+    font-weight: 500;
+    background-color: var(--color-6);
+    padding-top: 16px;
+    padding-bottom: 16px;
+}

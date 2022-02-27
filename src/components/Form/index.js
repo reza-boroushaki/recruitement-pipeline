@@ -3,6 +3,7 @@ import Input from "../Inputs/Input";
 import FileInput from "../Inputs/FileInput";
 import { stages, generateActionObject } from '../_helpers';
 import { updateUser, getUser } from "../../api";
+import './form.scss';
 
 export default function Form({ userID }) {
     const [stage, setStage] = useState(0);
@@ -56,7 +57,7 @@ export default function Form({ userID }) {
     }
     return (
         <>
-            <h1>{form?.full_name}</h1>
+            <h2 className='userName paddingLeftRight'>{form?.full_name}</h2>
             <form>
                 <div className="leftCol">
                     <div className="stageWrapper">

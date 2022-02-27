@@ -5,7 +5,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #E5E5E5;
 }
 
 *{
@@ -31,10 +30,18 @@ body {
 .container{
   width: 90vw;
   margin: 25px auto;
+  border: 1px solid var(--color-6);
+  border-radius: 8px;
+}
+.paddingLeftRight{
+  padding: 0 20px;
 }
 @media screen and (min-width: 768px){
   .container{
     width: 80vw;
     margin: 50px auto;
+  }
+  .paddingLeftRight{
+    padding: 0 40px;
   } 
 }
