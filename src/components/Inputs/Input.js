@@ -17,6 +17,12 @@ export default function Input({ attr }) {
         inputRef?.current.focus();
     }
 
+    const handleClear = e => {
+        e.preventDefault();
+        setInputValue('');
+        updateForm(name, '');
+    }
+
     return (
         <div>
             <p><label>{title ? title : ''}</label></p>
